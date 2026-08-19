@@ -151,7 +151,4 @@ Health Check API: `http://localhost:3000/api/health`
 * Recurring automatic transaction scheduling.
 * Multi-currency conversion support.
 
----
 
-## 📄 License
-This project is licensed under the ISC License.
