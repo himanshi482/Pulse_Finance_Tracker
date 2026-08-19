@@ -121,27 +121,28 @@ Health Check API: `http://localhost:3000/api/health`
 
 ### Landing Page
 
-![Landing Page](Screenshots/landing-page.png)
+![Landing Page](screenshots/landing-page.png)
 
 ### Login Page
 
-![Login Page](Screenshots/login-page.png)
+![Login Page](screenshots/login-page.png)
 
 ### Sign-up Page
 
-![Sign-up Page](Screenshots/Signup-page.png)
+![Sign-up Page](screenshots/Signup-page.png)
 
 ### Dashboard
 
-![Dashboard](Screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### Budget Tracker
 
-![Budget Tracker](Screenshots/budget-tracker.png)
+![Budget Tracker](screenshots/budget-tracker.png)
 
 ### Transaction History
 
-![Transaction History](Screenshots/transaction-history.png)
+![Transaction History](screenshots/transaction-history.png)
+
 ---
 
 ## 📝 Future Enhancements
