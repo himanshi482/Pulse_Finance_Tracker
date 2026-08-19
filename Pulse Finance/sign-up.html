@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./favicon_io/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./marketing.css">
+  <title>Sign Up — Pulse</title>
+  <style>
+    .auth-layout {
+      max-width: 480px;
+      margin: 40px auto 80px;
+    }
+    .auth-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(28, 56, 38, 0.05);
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 520px) {
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 14px 0 20px;
+      cursor: pointer;
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--green);
+      margin: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-bolt"></i></span> Pulse</a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <nav class="site-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="features.html"><i class="fa-solid fa-star"></i> Features</a>
+      <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="login-link" href="login.html">Log in</a>
+      <a class="button button-small active" href="sign-up.html">Get started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section auth-layout">
+      <div class="section-heading centered reveal" style="margin-bottom: 30px;">
+        <h1 style="font-size: clamp(34px, 4.5vw, 48px); letter-spacing: -1.8px; margin-bottom: 10px; font-weight: 800;">Create an account</h1>
+        <p style="color: var(--muted); font-size: 15px; margin: 0;">Start your journey to better financial decisions.</p>
+      </div>
+
+      <div class="auth-card reveal delay-1">
+        <form class="contact-form" id="signupForm" style="padding: 0; background: transparent; border: none;">
+          <label>Full Name
+            <input type="text" id="fullname" name="fullname" required placeholder="Alex Sharma">
+          </label>
+
+          <label>Email Address
+            <input type="email" id="email" name="email" required placeholder="alex@example.com">
+          </label>
+
+          <div class="field-row">
+            <label>Password
+              <input type="password" id="password" name="password" required minlength="6" placeholder="••••••••">
+            </label>
+            <label>Confirm Password
+              <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" placeholder="••••••••">
+            </label>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="showPasswordToggle">
+            <span>Show Password</span>
+          </label>
+
+          <button class="button" type="submit" style="width: 100%; justify-content: center; margin-top: 5px; padding: 14px; font-size: 14px;">Sign Up <i class="fa-solid fa-arrow-right"></i></button>
+
+          <p style="text-align: center; margin-top: 20px; font-size: 13px; color: var(--muted);">
+            Already have an account? <a href="login.html" style="color: var(--green); font-weight: 800; text-decoration: none;">Log in</a>
+          </p>
+
+          <p class="form-message" id="formMessage"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-bolt"></i></span> Pulse</a>
+    <p>Personal finance, made clear.</p>
+    <div>
+      <a href="about.html">About</a>
+      <a href="features.html">Features</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <small>© 2026 Pulse Finance.</small>
+  </footer>
+
+  <script src="./marketing.js"></script>
+  <script>
+    const signupForm = document.getElementById('signupForm');
+    const formMessage = document.getElementById('formMessage');
+    const showPasswordToggle = document.getElementById('showPasswordToggle');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    // Toggle Show Password
+    showPasswordToggle.addEventListener('change', function() {
+      const type = this.checked ? 'text' : 'password';
+      passwordInput.type = type;
+      confirmPasswordInput.type = type;
+    });
+
+    // Form Submit Handler
+    signupForm.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const fullname = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+
+      if (password !== confirmPassword) {
+        formMessage.style.color = '#d9534f';
+        formMessage.textContent = 'Passwords do not match.';
+        formMessage.classList.add('show');
+        return;
+      }
+
+      if (password.length < 6) {
+        formMessage.style.color = '#d9534f';
+        formMessage.textContent = 'Password must be at least 6 characters long.';
+        formMessage.classList.add('show');
+        return;
+      }
+
+      formMessage.style.color = 'var(--ink)';
+      formMessage.textContent = 'Creating your account...';
+      formMessage.classList.add('show');
+
+      try {
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fullname, email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Registration failed. Please try again.');
+        }
+
+        // Store auth details in localStorage
+        localStorage.setItem('pulse_token', data.token);
+        localStorage.setItem('pulse_user', JSON.stringify(data.user));
+        localStorage.setItem('isLoggedIn', 'true');
+
+        formMessage.style.color = 'var(--green)';
+        formMessage.textContent = 'Account created successfully! Redirecting to dashboard...';
+
+        setTimeout(() => {
+          window.location.href = './Personal-Finance-Tracker-main/index.html';
+        }, 1000);
+      } catch (err) {
+        formMessage.style.color = '#d9534f';
+        formMessage.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "pulse-finance-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix \"video-flow-code  env/video-flow-code\" run dev",
+    "start": "npm --prefix \"video-flow-code  env/video-flow-code\" run start",
+    "install:all": "npm --prefix \"video-flow-code  env/video-flow-code\" install"
+  }
+}
